@@ -1,0 +1,25 @@
+﻿@if (!Context.User.Identity.IsAuthenticated)
+{
+    // El usuario no está autenticado, por lo que
+    // le llevamos a cualquier vista protegida que,
+    // a su vez, nos llevará a Login
+    <li class="nav-link">
+        <a class="nav-link"
+        asp-controller="Usuarios"
+           asp-action="Perfil">
+            Log In
+        </a>
+    </li>
+}
+else
+{
+    <li class="nav-link">
+        <a asp-controller="Managed"
+           asp-action="Logout"
+           class="nav-link text-danger">
+            Log Out <span class="text-primary">
+                @Context.User.Identity.Name
+            </span>
+        </a>
+    </li>
+}
